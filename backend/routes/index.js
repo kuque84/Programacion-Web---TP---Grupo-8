@@ -16,7 +16,7 @@ router.use('/compras', compraRouter)
 /* /ORIGINAL */
 
 /* EDIT */
-
+router.use('/camiones', camionRouter)
 /* /EDIT */
 
 /* ORIGINAL */
