@@ -18,7 +18,7 @@ router.use('/compras', compraRouter)
 
 /* EDIT */
 router.use('/camiones', camionRouter)
-router.use('/camioneros', camionRouter)
+router.use('/camioneros', camioneroRouter)
 /* /EDIT */
 
 /* ORIGINAL */
