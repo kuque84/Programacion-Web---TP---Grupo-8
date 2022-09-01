@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Producto, Cliente } = require('../database/models')
+const { Producto, Cliente  } = require('../database/models')
 
 router.get("/:id", (req, res) => {
     Producto.findByPk(req.params.id).then(obj => {

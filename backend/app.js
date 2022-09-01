@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const { Cliente, Producto, ClienteProducto } = require('./database/models')
+const { Cliente, Producto, ClienteProducto, Camion, Camionero, HojadeRuta, Provincia, Paquete } = require('./database/models')
 const app = express()
 
 const sequelize = require('./database/sequelize')

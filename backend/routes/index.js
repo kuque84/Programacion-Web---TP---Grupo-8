@@ -7,6 +7,7 @@ const compraRouter = require('./Compra.routes')
 
 /* EDIT */
 const camionRouter = require('./Camion.routes')
+const camioneroRouter = require('./Camionero.routes')
 /* /EDIT */
 
 /* ORIGINAL */
@@ -17,6 +18,7 @@ router.use('/compras', compraRouter)
 
 /* EDIT */
 router.use('/camiones', camionRouter)
+router.use('/camioneros', camionRouter)
 /* /EDIT */
 
 /* ORIGINAL */
