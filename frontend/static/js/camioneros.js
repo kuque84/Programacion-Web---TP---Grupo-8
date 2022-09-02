@@ -54,7 +54,7 @@ function listarCamioneros() {
                         <td class="residencia">${camioneros.residencia}</td>
                         <td>
                             <a type="button" href="/camioneros/update/${camioneros.dni}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarProducto('${camioneros.dni}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarCamionero('${camioneros.dni}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
@@ -103,8 +103,8 @@ function editarCamionero() {
     disableButton(id = "guardar")
 
     // Preparar data
-    const producto_id = getIdFromUrl()
-    const url = `http://localhost:3000/camioneros/update/${producto_id}`
+    const camionero_dni = getIdFromUrl()
+    const url = `http://localhost:3000/camioneros/update/${camionero_dni}`
     const dni = document.getElementById("dni")
     const nombre = document.getElementById("nombre")
     const direccion = document.getElementById("direccion")
@@ -135,12 +135,12 @@ function editarCamionero() {
     })
 }
 
-function eliminarCamionero(id) {
-    const item = document.getElementById(id)
+function eliminarCamionero(dni) {
+    const item = document.getElementById(dni)
     const nombre = item.querySelector('.nombre').innerText
 
     if (confirm(`¿Desea eliminar el producto "${nombre}"?`)) {
-        const url = `http://localhost:3000/camioneros/delete/${id}`
+        const url = `http://localhost:3000/camioneros/delete/${dni}`
 
         fetch(url, {
             method: 'DELETE'
