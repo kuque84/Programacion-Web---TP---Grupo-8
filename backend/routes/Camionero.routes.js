@@ -41,6 +41,7 @@ router.post("/create", (req, res) => {
 router.put('/update/:dni', (req, res) => {
     console.log(req.body)
     Camionero.update({
+        dni: req.body.dni,
         nombre: req.body.nombre,
         direccion: req.body.direccion,
         telefono: req.body.telefono,

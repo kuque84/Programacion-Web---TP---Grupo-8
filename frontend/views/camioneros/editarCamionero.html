@@ -12,7 +12,10 @@
         <div class="card card-body">
             <a href="/camioneros" class="mb-2">Volver</a>
             <div class="h3 card-title">Editar Camionero</div>
-            <form>
+            <div class="d-flex justify-content-center">
+              <div id="spinner" class="spinner-border text-center" role="status"></div>
+            </div>
+            <form class="d-none" id="form">
               <div class="mb-3">
                 <label class="form-label" for="dni">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni">
@@ -40,7 +43,7 @@
                 <label class="form-label" for="residencia">Residencia</label>
                 <input type="text" class="form-control" id="residencia" name="residencia">
               </div>
-              <button type="button" class="btn btn-success" onclick="editarCamionero()" id="guardar">Guardar</button>
+              <button type="button" class="btn btn-success" onclick="editarProducto()" id="guardar">Guardar</button>
               <div class="form-text text-danger" id="error"></div>
             </form>
         </div>

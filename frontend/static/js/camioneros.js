@@ -16,12 +16,11 @@ function getIdFromUrl() {
 // CRUD
 
 function getCamionero() {
-    const dni = getIdFromUrl()
-    const url = `http://localhost:3000/camioneros/${dni}`
-    console.log(id)
+    const camionero_dni = getIdFromUrl()
+    const url = `http://localhost:3000/camioneros/${camionero_dni}`
 
     fetch(url).then(res => { return res.json() }).then(object => {
-        document.getElementById("dni").value = object.dni
+        /*document.getElementById("dni").value = object.dni*/
         document.getElementById("nombre").value = object.nombre
         document.getElementById("direccion").value = object.direccion
         document.getElementById("telefono").value = object.telefono
