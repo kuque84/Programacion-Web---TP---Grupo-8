@@ -10,14 +10,15 @@ function disableButton(id) {
 function getIdFromUrl() {
     const route = new URL(window.location).pathname
     const pathArray = route.split('/')
-    return pathArray[pathArray.length - 1]
+    return pathArray[pathArray.length]
 }
 
 // CRUD
 
 function getCamionero() {
-    const id = getIdFromUrl()
-    const url = `http://localhost:3000/camioneros/${id}`
+    const dni = getIdFromUrl()
+    const url = `http://localhost:3000/camioneros/${dni}`
+    console.log(id)
 
     fetch(url).then(res => { return res.json() }).then(object => {
         document.getElementById("dni").value = object.dni
@@ -52,8 +53,8 @@ function listarCamioneros() {
                         <td class="salario">${camioneros.salario}</td>
                         <td class="residencia">${camioneros.residencia}</td>
                         <td>
-                            <a type="button" href="/camioneros/update/${camioneros.id}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarProducto('${camioneros.id}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <a type="button" href="/camioneros/update/${camioneros.dni}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarProducto('${camioneros.dni}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `

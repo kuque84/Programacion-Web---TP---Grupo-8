@@ -38,18 +38,17 @@ router.post("/create", (req, res) => {
     })
 })
 
-router.put('/update/:id', (req, res) => {
+router.put('/update/:dni', (req, res) => {
     console.log(req.body)
     Camionero.update({
-        dni: req.body.dni,
         nombre: req.body.nombre,
         direccion: req.body.direccion,
         telefono: req.body.telefono,
         salario: req.body.salario,
-        residencia: req.body.residencia,
+        residencia: req.body.residencia
     }, {
         where: {
-            id: req.params.id
+            dni: req.params.dni
         }
     }).then(data => {
         res.json(data)
@@ -58,10 +57,10 @@ router.put('/update/:id', (req, res) => {
     })
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:dni', (req, res) => {
     Camionero.destroy({
         where: {
-            id: req.params.id
+            dni: req.params.dni
         }
     }).then(data => {
         res.json(data)
