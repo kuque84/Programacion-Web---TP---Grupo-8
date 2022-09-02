@@ -5,16 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Home</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <h1>Hola, el HOME de la aplicacion</h1>
-    <a href="/products" class="btn btn-info">Listado de productos</a>
-    <a href="/products/create" class="btn btn-info">Crear producto nuevo</a>
-    <a href="/camioneros" class="btn btn-info">Listado de camioneros</a>
-    <a href="/camioneros/create" class="btn btn-info">Crear camionero nuevo</a>
+    <div class="row">
+        <div class="container text-left">
+            <h2>Productos</h2>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a href="/products" class="btn btn-primary">Listado de productos</a>
+                <a href="/products/create" class="btn btn-success">Crear producto nuevo</a>
+            </div>
+        </div>
+        <div class="container text-left">
+            <h2>Camioneros</h2>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a href="/camioneros" class="btn btn-primary">Listado de camioneros</a>
+                <a href="/camioneros/create" class="btn btn-success">Crear camionero nuevo</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
