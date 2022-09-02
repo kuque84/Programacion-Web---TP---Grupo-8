@@ -97,19 +97,27 @@ function crearCamionero() {
     })
 }
 
-function editarProducto() {
+function editarCamionero() {
     // Deshabilitar botón
     disableButton(id = "guardar")
 
     // Preparar data
     const producto_id = getIdFromUrl()
-    const url = `http://localhost:3000/productos/update/${producto_id}`
+    const url = `http://localhost:3000/camioneros/update/${producto_id}`
+    const dni = document.getElementById("dni")
     const nombre = document.getElementById("nombre")
-    const precio = document.getElementById("precio")
+    const direccion = document.getElementById("direccion")
+    const telefono = document.getElementById("telefono")
+    const salario = document.getElementById("salario")
+    const residencia = document.getElementById("residencia")
 
     const data = {
+        'dni': dni.value,
         'nombre': nombre.value,
-        'precio': precio.value
+        'direccion': direccion.value,
+        'telefono': telefono.value,
+        'salario': salario.value,
+        'residencia': residencia.value
     }
 
     console.log(data)
@@ -119,24 +127,24 @@ function editarProducto() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }).then(response => response.json()).then(data => {
-        location.href = "/products"
+        location.href = "/camioneros"
     }).catch(error => {
         console.log(error);
         document.getElementById("error").innerText = "Ocurrió un error " + error
     })
 }
 
-function eliminarProducto(id) {
+function eliminarCamionero(id) {
     const item = document.getElementById(id)
     const nombre = item.querySelector('.nombre').innerText
 
     if (confirm(`¿Desea eliminar el producto "${nombre}"?`)) {
-        const url = `http://localhost:3000/productos/delete/${id}`
+        const url = `http://localhost:3000/camioneros/delete/${id}`
 
         fetch(url, {
             method: 'DELETE'
         }).then(response => response.json()).then(data => {
-            location.href = "/products"
+            location.href = "/camioneros"
         }).catch(error => {
             console.log(error);
             document.getElementById("error").innerText = "Ocurrió un error " + error
