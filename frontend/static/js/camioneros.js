@@ -10,17 +10,19 @@ function disableButton(id) {
 function getIdFromUrl() {
     const route = new URL(window.location).pathname
     const pathArray = route.split('/')
-    return pathArray[pathArray.length]
+    return pathArray[pathArray.length -1]
 }
 
 // CRUD
 
 function getCamionero() {
-    const camionero_dni = getIdFromUrl()
-    const url = `http://localhost:3000/camioneros/${camionero_dni}`
+    const id = getIdFromUrl()
+    const url = `http://localhost:3000/camioneros/${id}`
+    console.log(id)
 
     fetch(url).then(res => { return res.json() }).then(object => {
-        /*document.getElementById("dni").value = object.dni*/
+        console.log(object)
+        document.getElementById("dni").value = object.dni
         document.getElementById("nombre").value = object.nombre
         document.getElementById("direccion").value = object.direccion
         document.getElementById("telefono").value = object.telefono

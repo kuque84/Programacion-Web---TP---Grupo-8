@@ -11,7 +11,7 @@ router.get('/create', (req, res) => {
     res.sendFile(path.resolve('./views/camioneros/crearCamionero.html'));
 })
 
-// Editar camioneros --> /camioneros/update/:dni
+// Editar camioneros --> /camioneros/update/:id
 router.get('/update/:dni', (req, res) => {
     res.sendFile(path.resolve('./views/camioneros/editarCamionero.html'));
 })

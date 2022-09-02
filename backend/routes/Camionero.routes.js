@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const { Camionero, Camion, Paquete, HojadeRuta} = require('../database/models')
 
-router.get("/:id", (req, res) => {
-    Camionero.findByPk(req.params.id).then(obj => {
+router.get("/:dni", (req, res) => {
+    Camionero.findByPk(req.params.dni).then(obj => {
         res.json(obj)
     })
 })
@@ -41,7 +41,6 @@ router.post("/create", (req, res) => {
 router.put('/update/:dni', (req, res) => {
     console.log(req.body)
     Camionero.update({
-        dni: req.body.dni,
         nombre: req.body.nombre,
         direccion: req.body.direccion,
         telefono: req.body.telefono,
