@@ -42,45 +42,47 @@ function listarCamioneros() {
             let camioneros = document.getElementById('camioneros')
 
             let html = ''
-            let clientText = ''
-            data.map(product => {
-                clientText = '<ul>'
-                product.clientes.map(client => {
-                    clientText += `<li>${client.nombre}, ${client.dni}</li>`
-                })
-                clientText += '</ul>'
-
+            data.map(camioneros => {
+                console.log(camioneros)
                 html += `
-                    <tr id="${product.id}">
-                        <td>${product.id}</td>
-                        <td class="nombre">${product.nombre}</td>
-                        <td>$${product.precio}</td>
-                        <td>${clientText}</td>
+                    <tr id="${camioneros.dni}"><td>${camioneros.dni}</td>
+                        <td class="nombre">${camioneros.nombre}</td>
+                        <td class="direccion">${camioneros.direccion}</td>
+                        <td class="telefono">${camioneros.telefono}</td>
+                        <td class="salario">${camioneros.salario}</td>
+                        <td class="residencia">${camioneros.residencia}</td>
                         <td>
-                            <a type="button" href="/products/update/${product.id}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarProducto('${product.id}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <a type="button" href="/camioneros/update/${camioneros.id}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarProducto('${camioneros.id}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
             })
-
-            productos.innerHTML = html
+            camioneros.innerHTML = html
             document.getElementById('spinner').style.display = 'none'
         });
 }
 
-function crearProducto() {
+function crearCamionero() {
     // Deshabilitar botón
     disableButton(id = "guardar")
 
     // Preparar data
-    const url = 'http://localhost:3000/productos/create'
+    const url = 'http://localhost:3000/camioneros/create'
+    const dni = document.getElementById("dni")
     const nombre = document.getElementById("nombre")
-    const precio = document.getElementById("precio")
+    const direccion = document.getElementById("direccion")
+    const telefono = document.getElementById("telefono")
+    const salario = document.getElementById("salario")
+    const residencia = document.getElementById("residencia")
 
     const data = {
+        'dni': dni.value,
         'nombre': nombre.value,
-        'precio': precio.value
+        'direccion': direccion.value,
+        'telefono': telefono.value,
+        'salario': salario.value,
+        'residencia': residencia.value
     }
 
     fetch(url, {
@@ -88,7 +90,7 @@ function crearProducto() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }).then(response => response.json()).then(data => {
-        location.href = "/products"
+        location.href = "/camioneros"
     }).catch(error => {
         console.log(error);
         document.getElementById("error").innerText = "Ocurrió un error " + error
