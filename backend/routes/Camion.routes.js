@@ -9,13 +9,13 @@ router.get("/:matricula", (req, res) => {
 
 router.get("/", (req, res) => {
     Camion.findAll({
-        attributes: ['matricula', 'modelo', 'tipo', 'potencia'],
+        attributes: ['matricula', 'modelo', 'tipo', 'potencia']/*,
         include: {
             model: HojadeRuta,
             attributes: ['matricula', 'dni'],
             model: Camionero,
             attributes: ['dni', 'nombre', 'direccion', 'telefono', 'salario', 'residencia'],
-        }
+        }*/
     }).then(list => {
         res.json(list)
     })
@@ -34,7 +34,6 @@ router.post("/create", (req, res) => {
 router.put('/update/:matricula', (req, res) => {
     console.log(req.body)
     Camion.update({
-        matricula: req.body.matricula,
         modelo: req.body.modelo,
         tipo: req.body.tipo,
         potencia: req.body.potencia

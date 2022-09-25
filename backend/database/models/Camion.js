@@ -8,11 +8,11 @@ Camion.init({
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        primarKey: true
+        primaryKey: true
     },
     modelo: DataTypes.STRING,
     tipo: DataTypes.STRING,
-    potencia: DataTypes.STRING
+    potencia: DataTypes.STRING,
 }, {
     sequelize,
     modelName: 'camion',

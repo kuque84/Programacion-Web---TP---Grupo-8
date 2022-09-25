@@ -51,7 +51,7 @@ function listarCamiones() {
                         <td class="potencia">${camiones.potencia}</td>
                         <td>
                             <a type="button" href="/camiones/update/${camiones.matricula}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarCamionero('${camiones.matricula}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarCamion('${camiones.matricula}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
@@ -124,7 +124,7 @@ function editarCamion() {
     })
 }
 
-function eliminarCamionero(matricula) {
+function eliminarCamion(matricula) {
     const item = document.getElementById(matricula)
     const modelo = item.querySelector('.modelo').innerText
 
