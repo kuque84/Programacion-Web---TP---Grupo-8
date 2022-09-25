@@ -24,5 +24,35 @@ router.post("/create", (req, res) => {
         res.json(camion)
     })
 })
+/*               NUEVO              */
+router.put('/update/:id', (req, res) => {
+    Camion.update({
+        dni: req.body.dni,
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        direccion: req.body.direccion,
+        fechaNacimiento: req.body.fechaNacimiento
+    }, {
+        where: {
+            id: req.params.id
+        }
+    }).then(data => {
+        res.json(data)
+    }).catch(error => {
+        res.json(error)
+    })
+})
 
+router.delete('/delete/:id', (req, res) => {
+    Camion.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(data => {
+        res.json(data)
+    }).catch(error => {
+        res.json(error)
+    })
+})
+/*               /NUEVO              */
 module.exports = router
