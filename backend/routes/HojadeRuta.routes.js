@@ -23,6 +23,7 @@ router.get("/", (req, res) => {
 })
 router.post("/create", (req, res) => {
     HojadeRuta.create({
+        id: req.body.id,
         fecha: req.body.fecha,
         matricula: req.body.matricula,
         dni: req.body.dni
