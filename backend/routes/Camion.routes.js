@@ -27,10 +27,10 @@ router.post("/create", (req, res) => {
 /*               NUEVO              */
 router.put('/update/:id', (req, res) => {
     Camion.update({
-        dni: req.body.dni,
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        direccion: req.body.direccion,
+        matricula: req.body.matricula,
+        modelo: req.body.modelo,
+        tipo: req.body.tipo,
+        potencia: req.body.potencia,
         fechaNacimiento: req.body.fechaNacimiento
     }, {
         where: {
