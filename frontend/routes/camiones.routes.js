@@ -12,7 +12,7 @@ router.get('/create', (req, res) => {
 })
 
 // Editar camiones --> /camiones/update/:id
-router.get('/update/:dni', (req, res) => {
+router.get('/update/:matricula', (req, res) => {
     res.sendFile(path.resolve('./views/camiones/editarCamion.html'));
 })
 
