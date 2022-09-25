@@ -12,20 +12,18 @@
     <div class="container mt-5">
         <div class="card card-body">
           <a href="/" class="mb-2">Volver</a>
-            <div class="h3 card-title">Camioneros <a href="/camioneros/create" class="btn btn-success btn-sm text-white">Nuevo <i class="bi bi-plus-lg ml-2"></i></a></div>
+            <div class="h3 card-title">Camiones <a href="/camiones/create" class="btn btn-success btn-sm text-white">Nuevo <i class="bi bi-plus-lg ml-2"></i></a></div>
             <table class="table text-center">
                 <thead class="bg-dark text-light">
                     <tr>
-                        <th>Dni</th>
-                        <th>Nombre</th>
-                        <th>Direccion</th>
-                        <th>telefono</th>
-                        <th>Salario</th>
-                        <th>Residencia</th>
+                        <th>Matrícula</th>
+                        <th>Modelo</th>
+                        <th>tipo</th>
+                        <th>potencia</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="camioneros">
+                <tbody id="camiones">
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
@@ -35,11 +33,11 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
-  <script src="/js/camioneros.js"></script>
+  <script src="/js/camiones.js"></script>
 
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-      listarCamioneros()
+      listarCamiones()
     })
   </script>
 </html>

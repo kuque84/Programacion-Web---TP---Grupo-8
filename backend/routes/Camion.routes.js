@@ -19,7 +19,7 @@ router.post("/create", (req, res) => {
         matricula: req.body.matricula,
         modelo: req.body.modelo,
         tipo: req.body.tipo,
-        potencia: req.body.potencia,
+        potencia: req.body.potencia
     }).then(camion => {
         res.json(camion)
     })
@@ -30,8 +30,7 @@ router.put('/update/:id', (req, res) => {
         matricula: req.body.matricula,
         modelo: req.body.modelo,
         tipo: req.body.tipo,
-        potencia: req.body.potencia,
-        fechaNacimiento: req.body.fechaNacimiento
+        potencia: req.body.potencia
     }, {
         where: {
             id: req.params.id
