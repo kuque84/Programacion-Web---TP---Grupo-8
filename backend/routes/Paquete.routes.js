@@ -16,7 +16,14 @@ router.get("/", (req, res) => {
         },{
             model: Camionero,
             attributes: ['dni'],
+<<<<<<< HEAD
         }]*/
+=======
+        },{
+            model: HojadeRuta,
+            attributes: ['id']
+        }]
+>>>>>>> bc703bd85f01576b6ce9b7926f1e4de69c9b5c16
     }).then(list => {
         res.json(list)
     })
