@@ -16,6 +16,9 @@ router.get("/", (req, res) => {
         },{
             model: Camionero,
             attributes: ['dni'],
+        },{
+            model: HojadeRuta,
+            attributes: ['id']
         }]
     }).then(list => {
         res.json(list)

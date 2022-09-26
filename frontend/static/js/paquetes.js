@@ -17,7 +17,7 @@ function getIdFromUrl() {
 
 function getPaquete() {
     const id = getIdFromUrl()
-    const url = `http://localhost:3000/camiones/${id}`
+    const url = `http://localhost:3000/paquetes/${codigo}`
     console.log(id)
 
     fetch(url).then(res => { return res.json() }).then(object => {
@@ -35,7 +35,7 @@ function getPaquete() {
 
 }
 
-function listarPaquetes() {
+function listarPaquete() {
     let url = 'http://localhost:3000/paquetes';
     fetch(url, {})
         .then(response => response.json())
@@ -103,7 +103,7 @@ function editarPäquete() {
 
     // Preparar data
     const paquete_codigo = getIdFromUrl()
-    const url = `http://localhost:3000/paquete/update/${paqute_codigo}`
+    const url = `http://localhost:3000/paquete/update/${codigo}`
     const codigo = document.getElementById("codigo")
     const descripcion = document.getElementById("descripcion")
     const direcciondestinatario = document.getElementById("direcciondestinatario")
