@@ -9,14 +9,14 @@ router.get("/:codigo", (req, res) => {
 
 router.get("/", (req, res) => {
     Paquete.findAll({
-        attributes: ['codigo','descripcion','direcciondestinatario','dnicamionero','codigo_provincia'],
+        attributes: ['codigo','descripcion','direcciondestinatario','dnicamionero','codigo_provincia']/*,
         include: [{
             model: Camion,
             attributes: ['matricula']
         },{
             model: Camionero,
             attributes: ['dni'],
-        }]
+        }]*/
     }).then(list => {
         res.json(list)
     })
@@ -47,7 +47,7 @@ router.put('/update/:codigo', (req, res) => {
         codigo_provincia: req.body.codigo_provincia
     }, {
         where: {
-            codigo: req.params.dni
+            codigo: req.params.codigo
         }
     }).then(data => {
         res.json(data)
