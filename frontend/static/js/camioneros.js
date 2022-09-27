@@ -140,7 +140,7 @@ function eliminarCamionero(dni) {
     const item = document.getElementById(dni)
     const nombre = item.querySelector('.nombre').innerText
 
-    if (confirm(`¿Desea eliminar el producto "${nombre}"?`)) {
+    if (confirm(`¿Desea eliminar el camionero "${nombre}"?`)) {
         const url = `http://localhost:3000/camioneros/delete/${dni}`
 
         fetch(url, {

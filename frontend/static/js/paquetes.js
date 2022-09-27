@@ -17,7 +17,7 @@ function getIdFromUrl() {
 
 function getPaquete() {
     const id = getIdFromUrl()
-    const url = `http://localhost:3000/paquetes/${codigo}`
+    const url = `http://localhost:3000/paquetes/${id}`
     console.log(id)
 
     fetch(url).then(res => { return res.json() }).then(object => {
@@ -136,8 +136,8 @@ function eliminarPaquete(codigo) {
     const item = document.getElementById(codigo)
     const modelo = item.querySelector('.modelo').innerText
 
-    if (confirm(`¿Desea eliminar el producto "${modelo} codigo ${codigo}"?`)) {
-        const url = `http://localhost:3000/paqutes/delete/${codigo}`
+    if (confirm(`¿Desea eliminar el producto " codigo ${codigo}"?`)) {
+        const url = `http://localhost:3000/paquetes/delete/${codigo}`
 
         fetch(url, {
             method: 'DELETE'

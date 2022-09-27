@@ -4,6 +4,7 @@ const path = require('path');
 const camionerosRouter = require('./camioneros.routes')
 const camionesRouter = require('./camiones.routes')
 const hojadeRutaRouter = require('./hojaderutas.routes')
+const paquetesRouter = require ('./paquetes.routes')
 
 router.get('/', (req, res) => {
     res.sendFile(path.resolve('./views/index.html'));
@@ -12,5 +13,6 @@ router.get('/', (req, res) => {
 router.use('/camioneros',camionerosRouter)
 router.use('/camiones',camionesRouter)
 router.use('/hojaderutas',hojadeRutaRouter)
+router.use('/paquetes',paquetesRouter)
 
 module.exports = router;

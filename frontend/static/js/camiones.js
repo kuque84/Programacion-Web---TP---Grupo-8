@@ -128,7 +128,7 @@ function eliminarCamion(matricula) {
     const item = document.getElementById(matricula)
     const modelo = item.querySelector('.modelo').innerText
 
-    if (confirm(`¿Desea eliminar el producto "${modelo} matrícula ${matricula}"?`)) {
+    if (confirm(`¿Desea eliminar el camion "${modelo} matrícula ${matricula}"?`)) {
         const url = `http://localhost:3000/camiones/delete/${matricula}`
 
         fetch(url, {
