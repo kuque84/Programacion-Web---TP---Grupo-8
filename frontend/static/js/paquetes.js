@@ -35,7 +35,7 @@ function getPaquete() {
 
 }
 
-function listarPaquete() {
+function listarPaquetes() {
     let url = 'http://localhost:3000/paquetes';
     fetch(url, {})
         .then(response => response.json())
@@ -53,12 +53,12 @@ function listarPaquete() {
                         <td class="codigo_provincia">${paquetes.codigo_provincia}</td>
                         <td>
                             <a type="button" href="/paquetes/update/${paquetes.codigo}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${camiones.matricula}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquetes.matricula}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
             })
-            camiones.innerHTML = html
+            paquetes.innerHTML = html
             document.getElementById('spinner').style.display = 'none'
         });
 }
@@ -103,7 +103,7 @@ function editarPäquete() {
 
     // Preparar data
     const paquete_codigo = getIdFromUrl()
-    const url = `http://localhost:3000/paquete/update/${codigo}`
+    const url = `http://localhost:3000/paquete/update/${paqute_codigo}`
     const codigo = document.getElementById("codigo")
     const descripcion = document.getElementById("descripcion")
     const direcciondestinatario = document.getElementById("direcciondestinatario")
