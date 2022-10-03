@@ -9,14 +9,14 @@ router.get("/:id", (req, res) => {
 
 router.get("/", (req, res) => {
     HojadeRuta.findAll({
-        attributes: ['id','fecha']/*,
+        attributes: ['id','fecha'],
         include: [{
             model: Camion,
             attributes: ['matricula']
         },{
             model: Camionero,
             attributes: ['dni'],
-        }]*/
+        }]
     }).then(list => {
         res.json(list)
     })

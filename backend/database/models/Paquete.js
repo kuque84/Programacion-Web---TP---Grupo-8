@@ -4,16 +4,15 @@ const sequelize = require('../sequelize')
 class Paquete extends Model {}
 
 Paquete.init({
-    codigo: {
+    codigoPaquete: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         primaryKey: true
     },
     descripcion: DataTypes.STRING,
-    direcciondestinatario: DataTypes.STRING,
-    dniCamionero: DataTypes.STRING,
-    codigo_provincia: DataTypes.DATE
+    direccionDestinatario: DataTypes.STRING,
+    destinatario: DataTypes.STRING,
 }, {
     sequelize,
     modelName: 'paquete',

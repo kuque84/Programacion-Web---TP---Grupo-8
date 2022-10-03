@@ -14,7 +14,7 @@ router.get('/create', (req, res) => {
 })
 
 // Editar paquetes --> /paquetes/update/:codigo
-router.get('/update/:codigo', (req, res) => {
+router.get('/update/:codigoPaquete', (req, res) => {
     res.sendFile(path.resolve('./views/paquetes/editarPaquete.html'));
 })
 module.exports = router;

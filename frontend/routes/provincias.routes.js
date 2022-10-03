@@ -12,7 +12,7 @@ router.get('/create', (req, res) => {
 })
 
 // Editar provincias --> /provincias/update/
-router.get('/update/:codigo', (req, res) => {
+router.get('/update/:codigoProvincia', (req, res) => {
     res.sendFile(path.resolve('./views/provincias/editarProvincias.html'));
 })
 

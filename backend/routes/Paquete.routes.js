@@ -9,33 +9,33 @@ router.get("/:codigo", (req, res) => {
 
 router.get("/", (req, res) => {
     Paquete.findAll({
-        attributes: ['codigo','descripcion','direcciondestinatario','dnicamionero','codigo_provincia']/*,
+        attributes: ['codigoPaquete','descripcion','direccionDestinatario','destinatario'],
         include: [{
             model: Camion,
             attributes: ['matricula']
         },{
             model: Camionero,
             attributes: ['dni'],
-<<<<<<< HEAD
-        }]*/
-=======
+        
         },{
             model: HojadeRuta,
             attributes: ['id']
+
         }]
->>>>>>> bc703bd85f01576b6ce9b7926f1e4de69c9b5c16
-    }).then(list => {
+        }
+
+
+    ).then(list => {
         res.json(list)
     })
-})
-
+    })
+    
 router.post("/create", (req, res) => {
     Paquete.create({
-        codigo: req.body.codigo,
+        codigoPaquete: req.body.codigoPaquete,
         descripcion: req.body.descripcion,
-        direcciondestinatario: req.body.direcciondestinatario,
-        dnicamionero: req.body.dnicamionero,
-        codigo_provincia: req.body.codigo_provincia,
+        direcciondestinatario: req.body.direccionDestinatario,
+        dnicamionero: req.body.destinatario,
     
     }).then(paquete => {
         res.json(paquete)
@@ -44,17 +44,16 @@ router.post("/create", (req, res) => {
     })
 })
 
-router.put('/update/:codigo', (req, res) => {
+router.put('/update/:codigoPaquete', (req, res) => {
     console.log(req.body)
     Paqueteupdate({
-        codigo: req.body.codigo,
+        codigo: req.body.codigoPaquete,
         descripcion: req.body.descripcion,
-        direcciondestinatario: req.body.direcciondestinatario,
-        dnicamionero: req.body.dnicamionero,
-        codigo_provincia: req.body.codigo_provincia
+        direcciondestinatario: req.body.direccionDestinatario,
+        dnicamionero: req.body.destinatario,
     }, {
         where: {
-            codigo: req.params.codigo
+            codigo: req.params.codigoPaquete
         }
     }).then(data => {
         res.json(data)
@@ -63,10 +62,10 @@ router.put('/update/:codigo', (req, res) => {
     })
 })
 
-router.delete('/delete/:codigo', (req, res) => {
+router.delete('/delete/:codigoPaquete', (req, res) => {
     Paquete.destroy({
         where: {
-            codigo: req.params.codigo
+            codigo: req.params.codigoPaquete
         }
     }).then(data => {
         res.json(data)
@@ -75,4 +74,4 @@ router.delete('/delete/:codigo', (req, res) => {
     })
 })
 
-module.exports = router;
+module.exports= router

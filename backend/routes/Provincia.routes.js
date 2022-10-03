@@ -9,7 +9,7 @@ router.get("/:id", (req, res) => {
 
 router.get("/", (req, res) => {
     Provincia.findAll({
-        attributes: ['codigo','nombre'],
+        attributes: ['codigoProvincia','nombre'],
         include: [{
             model: Camion,
             attributes: ['matricula']
@@ -23,21 +23,21 @@ router.get("/", (req, res) => {
 })
 router.post("/create", (req, res) => {
     Provincia.create({
-        codigo: req.body.codigo,
+        codigo: req.body.codigoProvincia,
         nombre: req.body.nombre,
-    }).then(Provincia => {
-        res.json(Provincia)
+    }).then(provincia => {
+        res.json(provincia)
     })
 })
 /*               NUEVO              */
-router.put('/update/:codigo', (req, res) => {
+router.put('/update/:codigoProvincia', (req, res) => {
     console.log(req.body)
     Provincia.update({
-        codigo: req.body.codigo,
+        codigoProvincia: req.body.codigoProvincia,
         nombre: req.body.nombre,
     }, {
         where: {
-            codigo: req.params.codigo
+            codigoProvincia: req.params.codigoProvincia
         }
     }).then(data => {
         res.json(data)
@@ -46,10 +46,10 @@ router.put('/update/:codigo', (req, res) => {
     })
 })
 
-router.delete('/delete/:codigo', (req, res) => {
+router.delete('/delete/:codigoProvincia', (req, res) => {
     Provincia.destroy({
         where: {
-            codigo: req.params.codigo
+            codigo: req.params.codigoProvincia
         }
     }).then(data => {
         res.json(data)

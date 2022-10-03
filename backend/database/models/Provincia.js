@@ -4,7 +4,7 @@ const sequelize = require('../sequelize')
 class Provincia extends Model {}
 
 Provincia.init({
-    codigo: {
+    codigoProvincia: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,

@@ -22,11 +22,10 @@ function getPaquete() {
 
     fetch(url).then(res => { return res.json() }).then(object => {
         console.log(object)
-        document.getElementById("codigo").value = object.codigo
+        document.getElementById("codigoPaquete").value = object.codigoPaquete
         document.getElementById("descripcion").value = object.descripcion
-        document.getElementById("direcciondestinatario").value = object.direcciondestinatario
-        document.getElementById("dnicamionero").value = object.dnicamionero
-        document.getElementById("codigo_provincia").value = object.codigo_provincia
+        document.getElementById("direccionDestinatario").value = object.direccionDestinatario
+        document.getElementById("destinatario").value = object.destinatario
 
         document.getElementById("form").className = ""
         document.getElementById('spinner').className = "d-none"
@@ -46,14 +45,13 @@ function listarPaquetes() {
             data.map(paqutes => {
                 console.log(paqutes)
                 html += `
-                    <tr id="${paquetes.codigo}"><td>${paquetes.codigo}</td>
+                    <tr id="${paquetes.codigoPaquete}"><td>${paquetes.codigoPaquete}</td>
                         <td class="descripcion">${paquetes.descripcion}</td>
-                        <td class="direcciondestinatario">${paquetes.irecciondestinatario}</td>
-                        <td class="dnicamionero">${paquetes.dnicamionero}</td>
-                        <td class="codigo_provincia">${paquetes.codigo_provincia}</td>
+                        <td class="direccionDestinatario">${paquetes.direccionDestinatario}</td>
+                        <td class="destinatario">${paquetes.destinatario}</td>
                         <td>
-                            <a type="button" href="/paquetes/update/${paquetes.codigo}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquetes.matricula}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <a type="button" href="/paquetes/update/${paquetes.codigoPaquete}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquetes.codigoPaquete}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
@@ -69,19 +67,17 @@ function crearPaquete() {
 
     // Preparar data
     const url = 'http://localhost:3000/paquetes/create'
-    const codigo = document.getElementById("codigo")
+    const codigo = document.getElementById("codigoPaquete")
     const descripcion = document.getElementById("descripcion")
-    const direcciondestinatario = document.getElementById("direcciondestinatario")
-    const dnicamionero = document.getElementById("dnicamionero")
-    const codigo_provincia = document.getElementById("codigo_provincia")
+    const direcciondestinatario = document.getElementById("direccionDestinatario")
+    const dnicamionero = document.getElementById("destinatario")
 
 
     const data = {
-        'codigo': codigo.value,
+        'codigo': codigoPaquete.value,
         'descripcion': descripcion.value,
-        'direcciondestinatario': direcciondestinatario.value,
-        'dnicamionero': dnicamionero.value,
-        'codigo_provincia': codigo_provincia.value
+        'direcciondestinatario': direccionDestinatario.value,
+        'dnicamionero': destinatario.value,
     }
     }
 
@@ -103,19 +99,17 @@ function editarPäquete() {
 
     // Preparar data
     const paquete_codigo = getIdFromUrl()
-    const url = `http://localhost:3000/paquete/update/${paqute_codigo}`
-    const codigo = document.getElementById("codigo")
+    const url = `http://localhost:3000/paquete/update/${id}`
+    const codigoPaquete = document.getElementById("codigoPaquete")
     const descripcion = document.getElementById("descripcion")
-    const direcciondestinatario = document.getElementById("direcciondestinatario")
-    const dnicamionero = document.getElementById("dnicamionero")
-    const codigo_provincia = document.getElementById("codigo_provincia")
+    const direccionDestinatario = document.getElementById("direccionDestinatario")
+    const destinatario = document.getElementById("destinatario")
 
     const data = {
-        'codigo': codigo.value,
+        'codigo': codigoPaquete	.value,
         'descripcion': descripcion.value,
-        'direcciondestinatario': direcciondestinatario.value,
-        'dnicamionero': dnicamionero.value,
-        'codigo_provincia': codigo_provincia.value
+        'direcciondestinatario': direccionDestinatario.value,
+        'destinatario': destinatario.value,
     }
 
     console.log(data)
@@ -133,11 +127,11 @@ function editarPäquete() {
 }
 
 function eliminarPaquete(codigo) {
-    const item = document.getElementById(codigo)
-    const modelo = item.querySelector('.modelo').innerText
+    const item = document.getElementById(codigoPaquete)
+    const destinatario = item.querySelector('.destinatario').innerText
 
-    if (confirm(`¿Desea eliminar el producto " codigo ${codigo}"?`)) {
-        const url = `http://localhost:3000/paquetes/delete/${codigo}`
+    if (confirm(`¿Desea eliminar el producto " codigo ${codigoPaquete}"?`)) {
+        const url = `http://localhost:3000/paquetes/delete/${codigoPaquete}`
 
         fetch(url, {
             method: 'DELETE'
