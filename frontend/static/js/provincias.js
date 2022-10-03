@@ -90,12 +90,12 @@ function editarProvincia() {
 
     // Preparar data
     const camionero_dni = getIdFromUrl()
-    const url = `http://localhost:3000/provincias/update/${provincia.codigo}`
-    const codigo = document.getElementById("codigo")
+    const url = `http://localhost:3000/provincias/update/${provincia.codigoProvincia}`
+    const codigo = document.getElementById("codigoProvincia")
     const nombre = document.getElementById("nombre")
 
     const data = {
-        'codigo': codigo.value,
+        'codigoProvincia': codigoProvincia.value,
         'nombre': nombre.value,
         
     }
@@ -114,12 +114,12 @@ function editarProvincia() {
     })
 }
 
-function eliminarProvincia(codigo) {
-    const item = document.getElementById(codigo)
+function eliminarProvincia(codigoProvincia) {
+    const item = document.getElementById(codigoProvincia)
     const nombre = item.querySelector('.nombre').innerText
 
-    if (confirm(`¿Desea eliminar la provincia "${codigo}"?`)) {
-        const url = `http://localhost:3000/provincias/delete/${codigo}`
+    if (confirm(`¿Desea eliminar la provincia "${codigoProvincia}"?`)) {
+        const url = `http://localhost:3000/provincias/delete/${id}`
 
         fetch(url, {
             method: 'DELETE'
