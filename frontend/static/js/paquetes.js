@@ -39,19 +39,19 @@ function listarPaquetes() {
     fetch(url, {})
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             let paquetes = document.getElementById('paquetes')
-
             let html = ''
-            data.map(paqutes => {
-                console.log(paqutes)
+            data.map(paquete => {
+                console.log(paquete)
                 html += `
-                    <tr id="${paquetes.codigoPaquete}"><td>${paquetes.codigoPaquete}</td>
-                        <td class="descripcion">${paquetes.descripcion}</td>
-                        <td class="direccionDestinatario">${paquetes.direccionDestinatario}</td>
-                        <td class="destinatario">${paquetes.destinatario}</td>
+                    <tr id="${paquete.codigoPaquete}"><td>${paquete.codigoPaquete}</td>
+                        <td class="descripcion">${paquete.descripcion}</td>
+                        <td class="destinatario">${paquete.destinatario}</td>
+                        <td class="direccionDestinatario">${paquete.direccionDestinatario}</td>
                         <td>
-                            <a type="button" href="/paquetes/update/${paquetes.codigoPaquete}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquetes.codigoPaquete}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <a type="button" href="/paquetes/update/${paquete.codigoPaquete}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquete.codigoPaquete}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
@@ -67,19 +67,19 @@ function crearPaquete() {
 
     // Preparar data
     const url = 'http://localhost:3000/paquetes/create'
-    const codigo = document.getElementById("codigoPaquete")
+    const codigoPaquete = document.getElementById("codigoPaquete")
     const descripcion = document.getElementById("descripcion")
-    const direcciondestinatario = document.getElementById("direccionDestinatario")
-    const dnicamionero = document.getElementById("destinatario")
+    const direccionDestinatario = document.getElementById("direccionDestinatario")
+    const destinatario = document.getElementById("destinatario")
 
 
     const data = {
-        'codigo': codigoPaquete.value,
+        'codigoPaquete': codigoPaquete.value,
         'descripcion': descripcion.value,
-        'direcciondestinatario': direccionDestinatario.value,
-        'dnicamionero': destinatario.value,
+        'direccionDestinatario': direccionDestinatario.value,
+        'destinatario': destinatario.value,
     }
-    }
+    
 
     fetch(url, {
         method: 'POST',
@@ -92,23 +92,23 @@ function crearPaquete() {
         document.getElementById("error").innerText = "Ocurrió un error " + error
     })
 
-
-function editarPäquete() {
+}
+function editarPaquete() {
     // Deshabilitar botón
     disableButton(id = "guardar")
 
     // Preparar data
-    const paquete_codigo = getIdFromUrl()
-    const url = `http://localhost:3000/paquete/update/${id}`
+    const cp = getIdFromUrl()
+    const url = `http://localhost:3000/paquetes/update/${cp}`
     const codigoPaquete = document.getElementById("codigoPaquete")
     const descripcion = document.getElementById("descripcion")
     const direccionDestinatario = document.getElementById("direccionDestinatario")
     const destinatario = document.getElementById("destinatario")
 
     const data = {
-        'codigo': codigoPaquete	.value,
+        'codigoPaquete': codigoPaquete.value,
         'descripcion': descripcion.value,
-        'direcciondestinatario': direccionDestinatario.value,
+        'direccionDestinatario': direccionDestinatario.value,
         'destinatario': destinatario.value,
     }
 
@@ -126,7 +126,7 @@ function editarPäquete() {
     })
 }
 
-function eliminarPaquete(codigo) {
+function eliminarPaquete(codigoPaquete) {
     const item = document.getElementById(codigoPaquete)
     const destinatario = item.querySelector('.destinatario').innerText
 
