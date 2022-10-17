@@ -19,6 +19,7 @@ router.get("/", (req, res) => {
         
         include: [{
             model: Provincia,
+            as: 'provincia',
             attributes: ['nombre']
         }]
         }

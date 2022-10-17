@@ -1,34 +1,39 @@
 const router = require('express').Router()
 const { Camion, Camionero, HojadeRuta, Paquete, Provincia} = require('../database/models')
 
-router.get("/:id", (req, res) => {
-    Provincia.findByPk(req.params.codigo,{}).then(obj => {
+router.get("/:codigoProvincia", (req, res) => {
+    Provincia.findOne({
+        where: {
+            codigoProvincia: req.params.codigoProvincia,
+        }
+        }).then(obj => {
         res.json(obj)
     })
 })
 
 router.get("/", (req, res) => {
     Provincia.findAll({
-        attributes: ['codigoProvincia','nombre'],
+        attributes: ['codigoProvincia','nombre']/*,
         include: [{
             model: Camion,
             attributes: ['matricula']
         },{
             model: Camionero,
             attributes: ['dni'],
-        }]
+        }]*/
     }).then(list => {
         res.json(list)
     })
 })
 router.post("/create", (req, res) => {
     Provincia.create({
-        codigo: req.body.codigoProvincia,
+        codigoProvincia: req.body.codigoProvincia,
         nombre: req.body.nombre,
     }).then(provincia => {
         res.json(provincia)
     })
 })
+
 /*               NUEVO              */
 router.put('/update/:codigoProvincia', (req, res) => {
     console.log(req.body)
@@ -49,7 +54,7 @@ router.put('/update/:codigoProvincia', (req, res) => {
 router.delete('/delete/:codigoProvincia', (req, res) => {
     Provincia.destroy({
         where: {
-            codigo: req.params.codigoProvincia
+            codigoProvincia: req.params.codigoProvincia
         }
     }).then(data => {
         res.json(data)

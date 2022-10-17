@@ -6,5 +6,5 @@ Camionero.belongsToMany(Camion,{through: HojadeRuta, foreignKey: 'dni'})
 Camionero.hasMany(Paquete, {foreignKey:'camioneroDNI'})
 Paquete.belongsTo(Camionero,{foreignKey:'camioneroDNI'})
 
-Provincia.hasMany(Paquete, {})
-Paquete.belongsTo(Provincia, {})
+Provincia.hasMany(Paquete, {foreignKey: 'codigoProvincia'})
+Paquete.belongsTo(Provincia, {foreignKey: 'codigoProvincia', as: 'provincia'})

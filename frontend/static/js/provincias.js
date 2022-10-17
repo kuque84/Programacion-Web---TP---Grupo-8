@@ -22,7 +22,7 @@ function getProvincia() {
 
     fetch(url).then(res => { return res.json() }).then(object => {
         console.log(object)
-        document.getElementById("codigo").value = object.codigo 
+        document.getElementById("codigoProvincia").value = object.codigoProvincia 
         document.getElementById("nombre").value = object.nombre
         
         document.getElementById("form").className = ""
@@ -43,12 +43,12 @@ function listarProvincias() {
             data.map(provincias => {
                 console.log(provincias)
                 html += `
-                    <tr id="${provincias.codigo}"><td>${provincias.codigo}</td>
+                    <tr id="${provincias.codigoProvincia}"><td>${provincias.codigoProvincia}</td>
                         <td class="nombre">${provincias.nombre}</td>
                         </td>
                         <td>
-                            <a type="button" href="/camioneros/update/${provincias.codigo}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
-                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarCamionero('${provincias.codigo}')"><i class="bi bi-trash3-fill text-danger"></i></button>
+                            <a type="button" href="/provincias/update/${provincias.codigoProvincia}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
+                            <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarProvincia('${provincias.codigoProvincia}')"><i class="bi bi-trash3-fill text-danger"></i></button>
                         </td>
                     </tr>
                 `
@@ -64,11 +64,11 @@ function crearProvincia() {
 
     // Preparar data
     const url = 'http://localhost:3000/provincias/create'
-    const codigo = document.getElementById("codigo")
+    const codigoProvincia = document.getElementById("codigoProvincia")
     const nombre = document.getElementById("nombre")
     
     const data = {
-        'codigo': codigo.value,
+        'codigoProvincia': codigoProvincia.value,
         'nombre': nombre.value,
     }
 
@@ -89,9 +89,8 @@ function editarProvincia() {
     disableButton(id = "guardar")
 
     // Preparar data
-    const camionero_dni = getIdFromUrl()
-    const url = `http://localhost:3000/provincias/update/${provincia.codigoProvincia}`
-    const codigo = document.getElementById("codigoProvincia")
+    const codigoProvincia = getIdFromUrl()
+    const url = `http://localhost:3000/provincias/update/${codigoProvincia}`
     const nombre = document.getElementById("nombre")
 
     const data = {
@@ -118,8 +117,8 @@ function eliminarProvincia(codigoProvincia) {
     const item = document.getElementById(codigoProvincia)
     const nombre = item.querySelector('.nombre').innerText
 
-    if (confirm(`¿Desea eliminar la provincia "${codigoProvincia}"?`)) {
-        const url = `http://localhost:3000/provincias/delete/${id}`
+    if (confirm(`¿Desea eliminar la provincia "${codigoProvincia}, ${nombre}"?`)) {
+        const url = `http://localhost:3000/provincias/delete/${codigoProvincia}`
 
         fetch(url, {
             method: 'DELETE'
