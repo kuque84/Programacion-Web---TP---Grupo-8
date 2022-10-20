@@ -1,5 +1,7 @@
 // Auxiliares
 
+const { response } = require("express")
+
 function disableButton(id) {
     const button = document.getElementById(id)
     button.className = button.className + " disabled"
@@ -27,6 +29,8 @@ function getPaquete() {
         document.getElementById("direccionDestinatario").value = object.direccionDestinatario
         document.getElementById("destinatario").value = object.destinatario
 
+        loadSelect(provincia = object.codigoProvincia)
+        
         document.getElementById("form").className = ""
         document.getElementById('spinner').className = "d-none"
 
@@ -42,13 +46,21 @@ function listarPaquetes() {
             console.log(data)
             let paquetes = document.getElementById('paquetes')
             let html = ''
+            let provincia =''
+
             data.map(paquete => {
+                if(paquete.provincia !== null && paquete.provincia !== undefined && paquete.provincia !== {}){
+                    provincia = `${paquete.provincia.nombre} (${paquete.provincia.codigoProvincia})`
+                }else{
+                    provincia = ''
+                }
                 console.log(paquete)
                 html += `
                     <tr id="${paquete.codigoPaquete}"><td>${paquete.codigoPaquete}</td>
                         <td class="descripcion">${paquete.descripcion}</td>
                         <td class="destinatario">${paquete.destinatario}</td>
                         <td class="direccionDestinatario">${paquete.direccionDestinatario}</td>
+                        <td class="provincia">${provincia}</td>
                         <td>
                             <a type="button" href="/paquetes/update/${paquete.codigoPaquete}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
                             <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquete.codigoPaquete}')"><i class="bi bi-trash3-fill text-danger"></i></button>
@@ -71,13 +83,14 @@ function crearPaquete() {
     const descripcion = document.getElementById("descripcion")
     const direccionDestinatario = document.getElementById("direccionDestinatario")
     const destinatario = document.getElementById("destinatario")
-
+    const codigoProvincia = document.getElementById("codigoProvincia")
 
     const data = {
         'codigoPaquete': codigoPaquete.value,
         'descripcion': descripcion.value,
         'direccionDestinatario': direccionDestinatario.value,
         'destinatario': destinatario.value,
+        'codigoProvincia': codigoProvincia.value
     }
     
 
@@ -93,6 +106,7 @@ function crearPaquete() {
     })
 
 }
+
 function editarPaquete() {
     // Deshabilitar botón
     disableButton(id = "guardar")
@@ -142,4 +156,29 @@ function eliminarPaquete(codigoPaquete) {
             document.getElementById("error").innerText = "Ocurrió un error " + error
         })
     }
+}
+
+function getProvincias(provincias, provincia){
+    let url = 'http://localhost:3000/provincias';
+    fetch(url,{})
+        .then(response => response.json())
+        .then(data=>{
+            let html = '<option value="null">Seleccionar</option>'
+            let selected = ''
+            data.map(item => {
+                if (item.codigoProvincia == provincia){
+                selected = 'selected'
+            }else{
+                selected = ''
+            }
+            html += `<option value="${item.Provincia}" ${selected}>${item.nombre}</option>`
+        })
+        provincias.innerHTML = html
+        });
+}
+
+function loadSelect(provincias = null){
+    provincias = document.getElementById("provincia")
+
+    getProvincias(provincias, provincia)
 }

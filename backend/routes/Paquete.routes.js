@@ -16,11 +16,10 @@ router.get("/:codigoPaquete", (req, res) => {
 router.get("/", (req, res) => {
     Paquete.findAll({
         attributes: ['codigoPaquete','descripcion','direccionDestinatario','destinatario'],
-        
         include: [{
             model: Provincia,
             as: 'provincia',
-            attributes: ['nombre']
+            attributes: ['codigoProvincia','nombre']
         }]
         }
 
@@ -36,7 +35,8 @@ router.post("/create", (req, res) => {
         descripcion: req.body.descripcion,
         direccionDestinatario: req.body.direccionDestinatario,
         destinatario: req.body.destinatario,
-    
+        codigoProvincia: req.body.codigoProvincia
+        
     }).then(paquete => {
         res.json(paquete)
     }).catch(error => {
@@ -51,6 +51,7 @@ router.put('/update/:codigoPaquete', (req, res) => {
         descripcion: req.body.descripcion,
         direccionDestinatario: req.body.direccionDestinatario,
         destinatario: req.body.destinatario,
+        codigoProvincia: req.body.codigoProvincia
     }, {
         where: {
             codigoPaquete: req.params.codigoPaquete

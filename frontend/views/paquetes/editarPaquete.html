@@ -33,8 +33,9 @@
                 <input type="text" class="form-control" id="destinatario" name="destinatario">
               </div>
               <div class="mb-3">
-                <label class="form-label" for="codigo_provincia">Provincia</label>
-                <input type="text" class="form-control" id="codigo_provincia" name="codigo_provincia">
+                <label class="form-label" for="provincia">Provincia</label>
+                <select class= "form-select" id="provincia" name="provincia">
+                  <option selected>Cargando...</option>
               </div>
               <button type="button" class="btn btn-success" onclick="editarPaquete()" id="guardar">Guardar</button>
               <div class="form-text text-danger" id="error"></div>
