@@ -1,7 +1,5 @@
 // Auxiliares
 
-const { response } = require("express")
-
 function disableButton(id) {
     const button = document.getElementById(id)
     button.className = button.className + " disabled"
@@ -60,7 +58,7 @@ function listarPaquetes() {
                         <td class="descripcion">${paquete.descripcion}</td>
                         <td class="destinatario">${paquete.destinatario}</td>
                         <td class="direccionDestinatario">${paquete.direccionDestinatario}</td>
-                        <td class="provincia">${provincia}</td>
+                        <td class="provincia">${paquete.provincia.nombre}</td>
                         <td>
                             <a type="button" href="/paquetes/update/${paquete.codigoPaquete}" class="btn btn-outline-light btn-sm"><i class="bi bi-pencil-square text-dark"></i></a>
                             <button type="button" class="btn btn-outline-light btn-sm" onclick="eliminarPaquete('${paquete.codigoPaquete}')"><i class="bi bi-trash3-fill text-danger"></i></button>
@@ -83,16 +81,15 @@ function crearPaquete() {
     const descripcion = document.getElementById("descripcion")
     const direccionDestinatario = document.getElementById("direccionDestinatario")
     const destinatario = document.getElementById("destinatario")
-    const codigoProvincia = document.getElementById("codigoProvincia")
+    const provincia = document.getElementById("provincia")
 
     const data = {
         'codigoPaquete': codigoPaquete.value,
         'descripcion': descripcion.value,
         'direccionDestinatario': direccionDestinatario.value,
         'destinatario': destinatario.value,
-        'codigoProvincia': codigoProvincia.value
+        'codigoProvincia': provincia.value
     }
-    
 
     fetch(url, {
         method: 'POST',
@@ -118,12 +115,14 @@ function editarPaquete() {
     const descripcion = document.getElementById("descripcion")
     const direccionDestinatario = document.getElementById("direccionDestinatario")
     const destinatario = document.getElementById("destinatario")
+    const provincia = document.getElementById("provincia")
 
     const data = {
         'codigoPaquete': codigoPaquete.value,
         'descripcion': descripcion.value,
         'direccionDestinatario': direccionDestinatario.value,
         'destinatario': destinatario.value,
+        'codigoProvincia': provincia.value
     }
 
     console.log(data)
@@ -171,14 +170,14 @@ function getProvincias(provincias, provincia){
             }else{
                 selected = ''
             }
-            html += `<option value="${item.Provincia}" ${selected}>${item.nombre}</option>`
+            html += `<option value="${item.codigoProvincia}" ${selected}>${item.nombre}</option>`
         })
         provincias.innerHTML = html
         });
 }
 
-function loadSelect(provincias = null){
-    provincias = document.getElementById("provincia")
+function loadSelect(provincia = null){
+    let provincias = document.getElementById("provincia")
 
     getProvincias(provincias, provincia)
 }
